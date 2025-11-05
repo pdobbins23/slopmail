@@ -32,6 +32,17 @@ jobs:
             clang \
             llvm
 
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install frontend dependencies
+        run: bun install
+
+      - name: Build frontend
+        run: bun run build
+
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
         with:

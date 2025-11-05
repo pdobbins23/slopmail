@@ -1,5 +1,5 @@
 import { createSignal, onMount } from 'solid-js';
-import { invoke } from '@tauri-apps/api/tauri';
+import { invoke } from '@tauri-apps/api/core';
 import './styles/app.css';
 
 function App() {

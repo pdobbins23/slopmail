@@ -15,12 +15,12 @@ Thank you for your interest in contributing to SlopMail! This document provides 
    - Bun (https://bun.sh/)
    - Node.js 20+
    - Platform-specific dependencies:
-     - **Linux (Ubuntu/Debian)**: `libgtk-3-dev libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf libssl-dev pkg-config`
-     - **Linux (Fedora/RHEL)**: `gtk3-devel webkit2gtk4.1-devel libappindicator-gtk3-devel librsvg2-devel openssl-devel`
+     - **Linux (Ubuntu/Debian)**: `libgtk-3-dev libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf libssl-dev pkg-config nettle-dev clang llvm`
+     - **Linux (Fedora/RHEL)**: `gtk3-devel webkit2gtk4.1-devel libappindicator-gtk3-devel librsvg2-devel openssl-devel nettle-devel clang llvm`
      - **macOS**: Xcode Command Line Tools
      - **Windows**: Microsoft C++ Build Tools
 
-   > ✨ This project uses **Tauri v2**, which supports the latest Linux distributions including Ubuntu 24.04+, Debian 13+, and uses modern webkit2gtk-4.1.
+   > ✨ This project uses **Tauri v2** with **GPG/PGP encryption** (sequoia-openpgp), which requires nettle, clang, and llvm. It supports the latest Linux distributions including Ubuntu 24.04+, Debian 13+.
 
 ### Getting Started
 

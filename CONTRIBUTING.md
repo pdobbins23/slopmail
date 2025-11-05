@@ -15,7 +15,8 @@ Thank you for your interest in contributing to SlopMail! This document provides 
    - Bun (https://bun.sh/)
    - Node.js 20+
    - Platform-specific dependencies:
-     - **Linux**: `libgtk-3-dev libwebkit2gtk-4.0-dev libappindicator3-dev librsvg2-dev patchelf`
+     - **Linux (Ubuntu 24.04+)**: `libgtk-3-dev libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf libssl-dev pkg-config`
+     - **Linux (Ubuntu 22.04 and older)**: `libgtk-3-dev libwebkit2gtk-4.0-dev libappindicator3-dev librsvg2-dev patchelf libssl-dev pkg-config`
      - **macOS**: Xcode Command Line Tools
      - **Windows**: Microsoft C++ Build Tools
 

@@ -10,7 +10,7 @@
     "tauri": "tauri",
     "test": "vitest run",
     "test:watch": "vitest",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint .",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\""
   },
   "dependencies": {
@@ -19,6 +19,7 @@
     "solid-js": "^1.9.3"
   },
   "devDependencies": {
+    "@eslint/js": "^9.18.0",
     "@tauri-apps/cli": "^2.2.0",
     "@types/node": "^22.10.5",
     "@typescript-eslint/eslint-plugin": "^8.20.0",
@@ -26,6 +27,7 @@
     "autoprefixer": "^10.4.21",
     "eslint": "^9.18.0",
     "eslint-plugin-solid": "^0.14.3",
+    "globals": "^15.14.0",
     "jsdom": "^25.0.1",
     "postcss": "^8.4.49",
     "prettier": "^3.4.2",

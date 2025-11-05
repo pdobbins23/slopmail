@@ -94,8 +94,10 @@ slop-mail/
 ## Development Setup
 
 ### Prerequisites
-- Nix with flakes enabled
+- Nix with flakes enabled (recommended)
 - Basic understanding of Rust and TypeScript
+
+> ⚠️ **Ubuntu 24.04+ Users**: This project uses Tauri v1, which requires `webkit2gtk-4.0`. Ubuntu 24.04+ only provides `webkit2gtk-4.1`. Please use **Ubuntu 22.04 LTS** or use Nix for development. Migration to Tauri v2 is planned for future Ubuntu 24.04+ support.
 
 ### Getting Started
 
@@ -112,6 +114,8 @@ bun run tauri dev
 # Build for production
 bun run tauri build
 ```
+
+For detailed setup instructions without Nix, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Testing Strategy
 

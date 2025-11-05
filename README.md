@@ -55,7 +55,7 @@ A modern, cross-platform email client built with Tauri, SolidJS, and Rust
 - **Styling**: Tailwind CSS
 - **Language**: TypeScript
 - **Runtime**: Bun (for running and bundling)
-- **Desktop**: Tauri (supports Windows, macOS, Linux)
+- **Desktop**: Tauri v2 (supports Windows, macOS, Linux including Ubuntu 24.04+)
 - **Mobile**: Tauri Mobile (iOS, Android)
 
 ### Backend
@@ -96,8 +96,6 @@ slop-mail/
 ### Prerequisites
 - Nix with flakes enabled (recommended)
 - Basic understanding of Rust and TypeScript
-
-> ⚠️ **Ubuntu 24.04+ Users**: This project uses Tauri v1, which requires `webkit2gtk-4.0`. Ubuntu 24.04+ only provides `webkit2gtk-4.1`. Please use **Ubuntu 22.04 LTS** or use Nix for development. Migration to Tauri v2 is planned for future Ubuntu 24.04+ support.
 
 ### Getting Started
 

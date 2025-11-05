@@ -15,12 +15,12 @@ Thank you for your interest in contributing to SlopMail! This document provides 
    - Bun (https://bun.sh/)
    - Node.js 20+
    - Platform-specific dependencies:
-     - **Linux (Ubuntu 22.04 or Debian 11)**: `libgtk-3-dev libwebkit2gtk-4.0-dev libappindicator3-dev librsvg2-dev patchelf libssl-dev pkg-config`
-     - **Linux (Fedora/RHEL)**: `gtk3-devel webkit2gtk4.0-devel libappindicator-gtk3-devel librsvg2-devel openssl-devel`
+     - **Linux (Ubuntu/Debian)**: `libgtk-3-dev libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf libssl-dev pkg-config`
+     - **Linux (Fedora/RHEL)**: `gtk3-devel webkit2gtk4.1-devel libappindicator-gtk3-devel librsvg2-devel openssl-devel`
      - **macOS**: Xcode Command Line Tools
      - **Windows**: Microsoft C++ Build Tools
 
-   > ⚠️ **Important**: This project uses **Tauri v1**, which requires `webkit2gtk-4.0`. Ubuntu 24.04+ and Debian 13+ do not provide this package (only `webkit2gtk-4.1`). Please use **Ubuntu 22.04 LTS** or earlier for development. To upgrade to Ubuntu 24.04 support, the project needs to migrate to Tauri v2 (tracked in [tauri-apps/tauri#9662](https://github.com/tauri-apps/tauri/issues/9662)).
+   > ✨ This project uses **Tauri v2**, which supports the latest Linux distributions including Ubuntu 24.04+, Debian 13+, and uses modern webkit2gtk-4.1.
 
 ### Getting Started
 

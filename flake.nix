@@ -34,6 +34,7 @@
           openssl_3
           librsvg
           libsoup_3
+          nettle
         ] ++ lib.optional stdenv.hostPlatform.isLinux webkitgtk_4_1;
 
         # System packages for development
@@ -46,6 +47,7 @@
           gtk3
           libsoup_3
           librsvg
+          nettle
           bun
           nodejs_20
           cargo-watch
@@ -79,7 +81,7 @@
             echo "  bun test                 # Run frontend tests"
             echo ""
             export LD_LIBRARY_PATH=${pkgs.lib.makeLibraryPath libraries}:$LD_LIBRARY_PATH
-            export PKG_CONFIG_PATH="${pkgs.openssl_3.dev}/lib/pkgconfig:$PKG_CONFIG_PATH"
+            export PKG_CONFIG_PATH="${pkgs.openssl_3.dev}/lib/pkgconfig:${pkgs.nettle}/lib/pkgconfig:$PKG_CONFIG_PATH"
             export WEBKIT_DISABLE_COMPOSITING_MODE=1
           '';
 

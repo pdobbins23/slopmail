@@ -93,6 +93,15 @@ jobs:
       - name: Install dependencies
         run: bun install
 
+      - name: Typecheck (TypeScript)
+        run: |
+          # Attempt to use the local tsc binary if present, otherwise fall back to bun's tsc
+          if [ -f ./node_modules/.bin/tsc ]; then
+            ./node_modules/.bin/tsc --noEmit
+          else
+            bun tsc --noEmit
+          fi
+
       - name: Run linter
         run: bun run lint
 

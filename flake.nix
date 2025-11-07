@@ -45,7 +45,6 @@
           glib
           gtk3
           libsoup_3
-          webkitgtk_4_1
           librsvg
           bun
           nodejs_20

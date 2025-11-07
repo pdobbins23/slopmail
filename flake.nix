@@ -13,6 +13,7 @@
   outputs = { self, nixpkgs, flake-utils, rust-overlay }:
     flake-utils.lib.eachDefaultSystem (system:
       let
+        inherit (nixpkgs) lib;
         overlays = [ (import rust-overlay) ];
         pkgs = import nixpkgs {
           inherit system overlays;
@@ -25,7 +26,6 @@
 
         # Libraries needed for Tauri on Linux
         libraries = with pkgs; [
-          webkitgtk
           gtk3
           cairo
           gdk-pixbuf
@@ -34,7 +34,7 @@
           openssl_3
           librsvg
           libsoup_3
-        ];
+        ] ++ lib.optional stdenv.hostPlatform.isLinux webkitgtk_4_1;
 
         # System packages for development
         packages = with pkgs; [
@@ -45,7 +45,7 @@
           glib
           gtk3
           libsoup_3
-          webkitgtk
+          webkitgtk_4_1
           librsvg
           bun
           nodejs_20
@@ -55,7 +55,7 @@
           git
           curl
           wget
-        ];
+        ] ++ lib.optional stdenv.hostPlatform.isLinux webkitgtk_4_1;
 
       in
       {

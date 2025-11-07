@@ -12,6 +12,7 @@ node_modules/
 dist/
 dist-ssr/
 *.local
+bun.lock
 
 # Editor directories and files
 .vscode/*
@@ -28,6 +29,7 @@ dist-ssr/
 # Tauri
 src-tauri/target/
 src-tauri/WixTools/
+src-tauri/gen/
 
 # Rust
 **/*.rs.bk

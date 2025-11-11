@@ -113,6 +113,21 @@ bun run tauri dev
 bun run tauri build
 ```
 
+### Troubleshooting
+
+**OpenSSL Version Error**: If you see an error like `version 'OPENSSL_3.4.0' not found`, this means the flake.lock needs to be regenerated:
+
+```bash
+# Remove the old lock file (if it exists)
+rm flake.lock
+
+# Update and enter the development environment
+nix flake update
+nix develop
+```
+
+The development environment now explicitly sets OpenSSL paths and will display the OpenSSL version when you enter the shell.
+
 For detailed setup instructions without Nix, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Testing Strategy

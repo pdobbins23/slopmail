@@ -21,12 +21,13 @@ tokio = { version = "1.42", features = ["full"] }
 async-trait = "0.1"
 
 # Database
-sqlx = { version = "0.8", features = ["runtime-tokio-rustls", "sqlite", "migrate", "macros"] }
+sqlx = { version = "0.8", features = ["runtime-tokio-rustls", "sqlite", "migrate"] }
 
 # Email protocols
-async-imap = "0.10"
-async-native-tls = "0.5"
+# async-imap = { version = "0.10", features = ["runtime-tokio"] }
+# async-native-tls = "0.5"
 lettre = { version = "0.11", features = ["tokio1", "tokio1-native-tls", "smtp-transport", "builder"] }
+mail-parser = "0.9"
 
 # Search engine
 tantivy = "0.22"

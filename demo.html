@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SlopMail - Email Client Demo</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .email-item { transition: all 0.2s; }
+        .email-item:hover { background-color: #f3f4f6; }
+        .unread { font-weight: 600; }
+        .folder-item { transition: all 0.2s; cursor: pointer; }
+        .folder-item:hover { background-color: #e5e7eb; }
+        .folder-item.active { background-color: #3b82f6; color: white; }
+    </style>
+</head>
+<body class="bg-gray-50 h-screen overflow-hidden">
+    <div class="flex h-full">
+        <!-- Sidebar -->
+        <div class="w-64 bg-white border-r border-gray-200 flex flex-col">
+            <!-- Header -->
+            <div class="p-4 border-b border-gray-200">
+                <h1 class="text-xl font-bold text-gray-800">SlopMail</h1>
+                <p class="text-sm text-gray-600">Privacy-focused Email Client</p>
+            </div>
+            
+            <!-- Account Setup Button -->
+            <div class="p-4">
+                <button class="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors">
+                    + Add Account
+                </button>
+            </div>
+            
+            <!-- Folders -->
+            <div class="flex-1 overflow-y-auto">
+                <div class="folder-item active p-3 border-b border-gray-100">
+                    <div class="flex items-center justify-between">
+                        <span>📥 Inbox</span>
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">12</span>
+                    </div>
+                </div>
+                <div class="folder-item p-3 border-b border-gray-100">
+                    <div class="flex items-center justify-between">
+                        <span>📤 Sent</span>
+                        <span class="text-gray-500 text-xs">8</span>
+                    </div>
+                </div>
+                <div class="folder-item p-3 border-b border-gray-100">
+                    <div class="flex items-center justify-between">
+                        <span>📝 Drafts</span>
+                        <span class="text-gray-500 text-xs">2</span>
+                    </div>
+                </div>
+                <div class="folder-item p-3 border-b border-gray-100">
+                    <div class="flex items-center justify-between">
+                        <span>🗑️ Trash</span>
+                        <span class="text-gray-500 text-xs">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col">
+            <!-- Email List Header -->
+            <div class="bg-white border-b border-gray-200 p-4">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-lg font-semibold text-gray-800">Inbox</h2>
+                    <div class="flex items-center space-x-2">
+                        <button class="px-3 py-1 text-sm bg-gray-100 rounded hover:bg-gray-200">🔄 Refresh</button>
+                        <button class="px-3 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700">✉️ Compose</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex-1 flex">
+                <!-- Email List -->
+                <div class="w-96 bg-white border-r border-gray-200 overflow-y-auto">
+                    <!-- Email 1 - Unread -->
+                    <div class="email-item unread p-4 border-b border-gray-100 cursor-pointer">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-blue-600 rounded-full mt-2"></div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-semibold text-gray-900 truncate">SlopMail Team</span>
+                                    <span class="text-xs text-gray-500">2:30 PM</span>
+                                </div>
+                                <div class="text-sm font-medium text-gray-800 truncate">Welcome to SlopMail!</div>
+                                <div class="text-sm text-gray-600 truncate">Welcome to SlopMail! This is a test email to demonstrate the email client functionality...</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Email 2 - Read -->
+                    <div class="email-item p-4 border-b border-gray-100 cursor-pointer">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2"></div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-700 truncate">GitHub Notifications</span>
+                                    <span class="text-xs text-gray-500">11:45 AM</span>
+                                </div>
+                                <div class="text-sm text-gray-800 truncate">New pull request in your repository</div>
+                                <div class="text-sm text-gray-600 truncate">A new pull request has been opened in slopmail/slopmail...</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Email 3 - Unread with attachment -->
+                    <div class="email-item unread p-4 border-b border-gray-100 cursor-pointer">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-blue-600 rounded-full mt-2"></div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-semibold text-gray-900 truncate">Project Manager</span>
+                                    <span class="text-xs text-gray-500">Yesterday</span>
+                                </div>
+                                <div class="text-sm font-medium text-gray-800 truncate">📎 Weekly Report</div>
+                                <div class="text-sm text-gray-600 truncate">Please find attached the weekly project report with updated timelines...</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- More emails... -->
+                    <div class="email-item p-4 border-b border-gray-100 cursor-pointer">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2"></div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-700 truncate">Newsletter</span>
+                                    <span class="text-xs text-gray-500">2 days ago</span>
+                                </div>
+                                <div class="text-sm text-gray-800 truncate">Your weekly tech digest</div>
+                                <div class="text-sm text-gray-600 truncate">Top stories this week in technology and development...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Email Detail -->
+                <div class="flex-1 bg-white">
+                    <div class="h-full flex items-center justify-center text-gray-500">
+                        <div class="text-center">
+                            <div class="text-6xl mb-4">📧</div>
+                            <p class="text-lg">Select an email to read</p>
+                            <p class="text-sm mt-2">The email content will appear here</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Add interactivity
+        document.querySelectorAll('.folder-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.folder-item').forEach(f => f.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        
+        document.querySelectorAll('.email-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove unread indicator
+                const unreadDot = this.querySelector('.bg-blue-600');
+                if (unreadDot) {
+                    unreadDot.classList.remove('bg-blue-600');
+                    unreadDot.classList.add('w-2');
+                    this.classList.remove('unread');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

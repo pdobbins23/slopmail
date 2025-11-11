@@ -4,8 +4,11 @@
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 
 mod commands;
+mod db;
+mod email;
 
-fn main() {
+#[tokio::main]
+async fn main() {
     // Initialize logging
     tracing_subscriber::registry()
         .with(
@@ -15,9 +18,25 @@ fn main() {
         .with(tracing_subscriber::fmt::layer())
         .init();
 
+        // Initialize database
+    let db_pool = db::init_database("sqlite:slopmail.db").await
+        .expect("Failed to initialize database");
+
     tauri::Builder::default()
         .plugin(tauri_plugin_shell::init())
-        .invoke_handler(tauri::generate_handler![commands::greet])
+        .manage(db_pool)
+        .invoke_handler(tauri::generate_handler![
+            commands::greet,
+            commands::add_account,
+            commands::get_accounts,
+            commands::test_account_connection,
+            commands::sync_folders,
+            commands::get_folders,
+            commands::fetch_emails,
+            commands::get_emails,
+            commands::send_email,
+            commands::mark_email_read
+        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

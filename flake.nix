@@ -67,6 +67,7 @@
             echo "Rust: $(rustc --version)"
             echo "Bun: $(bun --version)"
             echo "Node: $(node --version)"
+            echo "OpenSSL: $(openssl version)"
             echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
             echo ""
             echo "📦 To get started:"
@@ -80,12 +81,18 @@
             echo ""
             export LD_LIBRARY_PATH=${pkgs.lib.makeLibraryPath libraries}:$LD_LIBRARY_PATH
             export PKG_CONFIG_PATH="${pkgs.openssl_3.dev}/lib/pkgconfig:$PKG_CONFIG_PATH"
+            export OPENSSL_DIR="${pkgs.openssl_3.dev}"
+            export OPENSSL_LIB_DIR="${pkgs.openssl_3.out}/lib"
+            export OPENSSL_INCLUDE_DIR="${pkgs.openssl_3.dev}/include"
             export WEBKIT_DISABLE_COMPOSITING_MODE=1
           '';
 
           # Environment variables
           RUST_SRC_PATH = "${rustToolchain}/lib/rustlib/src/rust/library";
           RUST_BACKTRACE = "1";
+          OPENSSL_DIR = "${pkgs.openssl_3.dev}";
+          OPENSSL_LIB_DIR = "${pkgs.openssl_3.out}/lib";
+          OPENSSL_INCLUDE_DIR = "${pkgs.openssl_3.dev}/include";
         };
       }
     );

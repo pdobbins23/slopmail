@@ -34,6 +34,7 @@
           openssl_3
           librsvg
           libsoup_3
+          nettle
         ] ++ lib.optional stdenv.hostPlatform.isLinux webkitgtk_4_1;
 
         # System packages for development
@@ -46,6 +47,7 @@
           gtk3
           libsoup_3
           librsvg
+          nettle
           bun
           nodejs_20
           cargo-watch
